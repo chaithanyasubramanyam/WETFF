@@ -1,0 +1,526 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.nav1{
+    background-color: #C2C5C5;
+    height : 60px;
+    width : 100%;
+}
+
+/* .logo{
+    color: white;
+    font-size: 35px;
+    line-height:60px;
+    padding: 0 100px;
+    margin-bottom: 0px;
+    font-weight : bold;
+    font-family: Garamond;
+    letter-spacing: 1px;
+} */
+
+.nav1 ul{
+    text-align: center;
+    margin-right : 40px;
+    }
+
+.nav1 li {
+    display : inline-block;
+    line-height : 60px;
+    margin:0 40px;
+}
+
+.nav1 li a{
+    font-family: Verdana, sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    text-transform: uppercase;
+    color :black;
+    
+}
+.nav1 li a:hover{
+    text-decoration: none;
+    transition: .2s;
+    padding : 5px 13px;
+    border-radius: 3px;
+    border: solid #CBBBE6;
+    color:#6B7A89;
+}
+
+/* .homeactive{
+    padding : 5px 13px;
+    border-radius: 3px;
+    border: solid #CBBBE6;
+    text-decoration: none;
+} */
+
+
+.toggle{
+    margin-left: 0;
+    position: absolute;
+    color : black;
+    margin-left: 20px;
+    margin-top: 20px;
+
+}
+
+
+
+/* nav2 css code */
+.nav2{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 100%;
+    margin-top: 0px;
+    line-height: 60px;
+    text-align: center;
+}
+.nav2img{
+    margin-left: 60px;
+    text-decoration: none;
+}
+
+.nav2logo{
+    text-decoration: none;
+}
+
+
+
+.nav2search{
+    line-height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    border: 2px solid #464255;
+    border-radius: 20px;
+}
+
+.searchtxt{
+    line-height: 40px;
+    font-family:sans-serif;
+    background-color: white;
+    border: none;
+    outline: none;
+    float: left;
+    transition: 0.4s;
+    font-size: 16px; 
+    margin-left:20px;
+    margin-right: 200px;
+    padding-top: 2px;
+    padding-right: 60px;
+
+}
+.searchbtn{
+    float:right;
+    width: 40px;
+    height: 40px;
+    color:#464255;
+    
+}
+.nav2drop{
+    margin-top: 10px;
+    margin-left: 50px;
+    line-height: 60px;
+}
+#location{
+    background-color: white;
+    border:2px solid #464255;
+    width:200px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 20px;
+
+}
+
+.nav2join{
+    margin-top: 10px;
+}
+
+
+.nav2join a{
+    color:white;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    border: 2px solid #464255;
+    border-radius: 20px;
+    background-color:#464255;
+    margin-left: 50px;
+    transition: .5s;
+}
+
+.nav2join a:hover{
+    text-decoration: none;
+    border: 2px solid #464255;
+    border-radius: 20px;
+    background-color:white;
+    color:#464255;
+
+}
+
+.nav2sign{
+    margin-top: 10px;
+}
+
+.nav2sign a:hover{
+    text-decoration: none;
+    border: 2px solid #464255;
+    border-radius: 20px;
+    background-color:white;
+    color:#464255;
+    
+
+}
+
+.nav2sign a{
+    color:white;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    border: 2px solid #464255;
+    border-radius: 20px;
+    background-color:#464255;
+    margin-left: 50px;
+    transition: .5s;
+    
+}
+
+.totalpagecontent{
+    background-color: #F2F5F5;
+}
+
+.pagecontent{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.valuebox{
+    background-color: #F2F5F5;
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: center;
+    /* border: 2px solid #464255;
+    border-radius: 20px; */
+}
+
+.value{
+    font-size: 60px;
+    color:black;
+    font-family: serif;
+    
+}
+
+.valuemoney{
+    font-size: 60px;
+    color:black;
+    font-family: serif;
+}
+.piechartback{
+    background-color: white;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+.piechartheading{
+    margin-left: 10%;
+    margin-top: 40px;
+    color:#086430;
+}
+
+
+
+
+.cashflow{
+    color: black;
+    font-size: 60px;
+    font-family: serif;
+    margin-top: 40px;
+    text-align: center;
+    background-color: #F2F5F5;
+
+}
+
+
+
+.linearchartheading{
+    margin-left: 10%;
+    margin-top: 40px;
+    color:#086430;
+    padding-top: 60px;
+}
+
+
+.lineargraph{
+    margin-top: 40px;
+    height: 60vh;
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color:white ;
+
+}
+
+.linearback{
+    background-color:white;
+
+}
+
+
+
+/* 
+@media (max-width:952px){
+    .logo{
+        font-size: 30px;
+        padding-left: 50px;
+
+    }
+    .nav1 li a {
+        font-size: 16px;
+
+    }
+} */
+
+@media (max-width:858px){
+    .nav1{
+        line-height: 40px;
+    }
+
+    .toggle{
+        margin-top: 10px;
+    }
+    
+
+
+    .nav1 li {
+            display : inline;
+            margin-right: 0px;        
+    }
+        
+    .nav1 li a{
+            font-family: Verdana, sans-serif;
+            text-decoration: none;
+            font-size: 17px;
+            text-transform: uppercase;
+            color : black;
+            border:none;
+            
+    }
+    .nav1 li a:hover{
+            text-decoration: none;
+            transition: .2s;
+            border: none;
+            
+    }
+        
+        
+    
+    
+    .nav2{
+        background-color:white;
+        position: relative;
+        line-height: 40px;
+    }
+
+    .nav2img{
+        margin-left: 0px;
+    }
+
+    .nav2logo{
+        height : 25px;
+        margin-right: 10px;
+        margin-left: 5px;
+        text-decoration: none;
+        font-size: 20px; 
+    }
+    
+
+    .nav2drop{
+        position: relative;
+        margin-left: 10px;
+        margin-top: 2px;
+        line-height: 40px;
+        
+    }
+    #location{
+        border : none;
+        border-radius: none;
+        width : 40px;
+        height : 20px;
+        padding-left: 0px;
+        background-color: white;
+
+    
+    }
+
+    
+    .nav2search{
+        line-height: 40px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        border: 2px solid #464255;
+        border-radius: 0px;
+    }
+    
+    .searchtxt{
+        background-color:white;
+        margin-top: 2px;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        font-size: 16px; 
+        margin-right: 0px;
+        padding-top: 0px;
+        padding-right:5px;
+        padding-left: 0px;
+    }
+    .searchbtn{
+        width: 30px;
+        height: 40px;
+        color:#464255;
+        
+    }
+
+    /* .nav2searchmedia{
+        margin-top: 0px;
+        background-color: #EDD5F6;
+        border: 2px solid #464255;
+        width: 99%;
+        line-height: 40px;
+    }
+
+
+    
+
+    .searchtxtmedia{
+        background-color: #EDD5F6;
+        color : black;
+        margin-left: 0px;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        font-size: 16px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+    }
+
+    .searchbtnmedia{
+        position: absolute;
+        color:#464255;
+        margin-left: 0px;
+        left:100%;
+        transform: translate(-200%, 0);
+
+
+    }
+
+ */
+    .valuebox{
+        margin-top: 10px;
+    }
+    .value{
+        font-size: 40px;
+    }
+
+    .valuemoney{
+        font-size: 40px;
+
+    }
+
+    .piechartback{
+        background-color: white;
+        padding-bottom: 50px;
+        padding-top: 30px;
+    }
+    .piechartheading{
+        margin-left: 10%;
+        margin-top: 20px;
+        color:#086430;
+        font-size:25px;
+        margin-bottom: 30px;
+    }
+
+    .linearchartheading{
+        margin-left: 10%;
+        margin-top: 40px;
+        color:#086430;
+        font-size:25px;
+    }
+
+    .cashflow{
+        color:black;
+        font-size: 40px;
+        font-family: serif;
+        margin-top: 40px;
+        text-align: center;
+    
+    }
+    
+    .lineargraph{
+        margin-top: 40px;
+        margin-left: 3%;
+        margin-right: 0px;
+        width: 95%;
+        height: 40px;
+    }
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    /* .searchtxt{
+        border: none;
+        outline: none;
+        float: left;
+        transition: 0.4s;
+        font-size: 12px; 
+        margin-left:15px;
+        margin-right: 20px;
+        padding-top: 10px;
+    }
+
+    .searchbtn{
+        float:right;
+        width: 25px;
+        height: 30px;
+        color:#464255;
+        padding-bottom: 5px;
+        padding-right: 5px;
+        
+    } */
+
+    .nav2join a{
+        display: none;
+    }
+
+    .nav2sign a{
+        display: none;
+    }
+
+
+
+
+
+
+
+}
+
