@@ -1,0 +1,12 @@
+.vendorinp{
+    width: 100px;
+}
+
+.vendortable{
+    text-align: center;
+    border: 2px solid black;
+}
+
+.vendortable thead tr{
+    background-color: blanchedalmond;
+}

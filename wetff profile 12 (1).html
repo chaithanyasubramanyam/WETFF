@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html long="en">
+<head>
+    <title>WETFF profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scaie=1.0">
+    <meta http-equiv="X-UA-compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <style>
+        .navbar{
+            top: 0px;
+            left: -200px;
+            width: 250px;
+            height: 100%;
+            opacity: 0;
+            background-color: black;
+           
+            
+            
+
+        }
+        .navbar__link{
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: ivory;
+            border-top: 1px solid rgba(225,225, 225, .2);
+            border-bottom: 1px solid  rgba(225,225, 225, .2);
+            padding-left: 30px;
+            transition: .3s;
+            
+        }
+        a:hover{
+            padding-left: 50px;
+            color: darkgoldenrod;
+        }
+        
+        .nav1 div{
+            align-items: right;
+            width: 25px;
+            height: 3px;
+            margin: 5px;
+            background-color: seashell;
+            color:rgb(16, 17, 17);
+        }
+        .navbar__link.material-icons{
+            margin-right: 12px;
+        }
+        .navbar__link:active{
+            width: 220px;
+            background-color:gray;
+            
+        }
+        .navbar--open{
+            left: 0px;
+            opacity: 1;
+            
+            
+        }
+        .myclass{ 
+		float: left;
+		width: 100px;
+		height: 100px;
+		margin: 5px; }
+		.mydiv1{
+			width: 250px;
+			height: 100%;
+		}
+        body{
+            background-image: url('https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+            background-size: cover;
+        }
+        h2{
+            margin: 0% 32%;
+            padding: 10px 40px;
+            border: 1px gold solid;
+            }
+        
+      </style>
+</head>
+<body>
+   
+    <h2 style="color: cornsilk; font-family: sans-serif; text-align: center; ">WETFF solution private limited.</h2>
+    
+    <div onclick="toggleNav()" class="nav1">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+
+
+    
+    <div class="navbar">
+        <div class="mydiv1">
+        <a href="#" class="navbar__link">
+            <span class="material-icons"><img  class="myclass" src="https://ak7.picdn.net/shutterstock/videos/1034288927/thumb/6.jpg" height="30%" width="30%"></span><h4 style="cursor: default;">MRIDUL MANHAS </h4> 
+        <a href="#" class="navbar__link">
+            <span class="material-icons">account_box</span>Profiles and IDs
+        </a>
+        <a href="#" class="navbar__link">
+            <span class="material-icons">verified_user</span>Verification/validation status
+        </a>
+        <a href="#" class="navbar__link">
+            <span class="material-icons">feedback</span>Help & Feedback
+        </a>
+        <a href="#" class="navbar__link">
+            <span class="material-icons">bookmark</span>Prospective Wishlist
+        </a>
+        <a href="#" class="navbar__link">
+            <span class="material-icons">settings</span>Settings
+        </a>
+        <a href="#" class="navbar__link">
+            <span class="material-icons">info</span>Theory/Market info
+        </a>
+        <a href="#" class="navbar__link">
+            <span class="material-icons">track_changes</span>Credit score
+        </a>
+
+    </div>
+     <script>
+         function toggleNav(){
+             document.querySelector('.navbar').classList.toggle("navbar--open");
+         }
+
+     </script>
+
+
+
+
+
+</body>

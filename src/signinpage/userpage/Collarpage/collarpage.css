@@ -1,0 +1,228 @@
+.collarpage{
+    background-color: #F2F5F5;
+}
+
+.cnav1{
+    line-height: 80px;
+    background-color: #DEDEE1;
+}
+
+
+.cnav1 li{
+    display: inline-block;
+}
+
+.cnav1ul{
+
+}
+
+.headback{
+    margin-left: 79px;
+    text-decoration: none;
+    padding-left: 20px;
+    margin-right: 0px;
+    font-size: 15px;
+    padding-right : 0px;
+    color: rgb(107, 61, 126);
+    font-family: Arial;
+}
+
+.headcollar{
+    margin-top: 3px;
+    margin-left: 5%;
+    margin-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 27px;
+    font-weight: bold;
+    color: rgb(77, 26, 90);
+    font-family: Andale Mono, monospace;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+    background-color: rgb(220, 220, 233);
+    border-radius: 20px;
+}
+
+.headsecure{
+    margin-top: 3px;
+    margin-left: -2.5%;
+    margin-right:40px; 
+    padding-left: 15px;
+    padding-right:15px;
+    font-size: 27px;
+    font-weight: bold;
+    color: rgb(90, 57, 99);
+    font-family: Andale Mono, monospace;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+    background-color: rgb(225, 225, 230);
+    border-radius: 20px;
+    
+}
+
+/* collar */
+
+.collarcontent{
+    margin-top: 3%;
+    font-size: 20px;
+}
+
+.class{
+    margin-left:110px;
+    font-weight:bold;
+}
+
+.classdropdown{
+    margin-right:350px;
+}
+
+#classdrop{
+    width:140px;
+    height: 35px;
+    font-size: 20px;
+    border: 1px solid #9B9B9B ;
+    border-radius: 15px;
+}
+
+.Purchase{
+    font-weight: bold;
+    margin-left: 110px;
+
+}
+.monthyear{
+    width : 30%;
+    border: 1px solid #9B9B9B ;
+    margin-right: 30px;
+}
+
+.collarupload{
+    margin-left: 100px;
+    font-weight: bold ;
+}
+
+#uploadimg{
+    
+    font-size: 15px;
+} 
+
+.collarBill{
+    margin-left: 40px;
+    font-weight: bold;
+}
+
+#uploadBill{
+    font-size: 15px;
+}  
+
+.retrive{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.retrivebtn{
+    font-size: 20px;
+    margin-bottom: 20px;
+    
+}
+
+
+
+
+@media (max-width:858px){
+    .cnav1{
+        line-height: 60px;
+        background-color: rgb(213, 213, 228);
+    }
+
+    .cnav1ul{
+    }
+
+    .headback{
+        margin-left: 0px;
+        padding-left: 20px;
+        margin-right: 0px;
+        font-size: 15px;
+        padding-right : 0px;
+        color: black;
+        font-family: Arial;
+    }
+
+    .headcollar{
+        margin-top: 3px;
+        margin-left: 50px;
+        margin-right: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 25px;
+        font-weight: bold;
+        color: black;
+        font-family: Andale Mono, monospace;
+        box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+        background-color: #DEDEE1;
+        border-radius: 5px;
+    }
+
+    .headsecure{
+        margin-left: 10px;
+        font-size: 25px;
+        color: black;
+        font-family: Arial;
+        
+    }
+
+    /* collar */
+
+    .collarcontent{
+        margin-top: 10%;
+        font-size: 20px;
+    }
+
+    .class{
+        margin-left: 40px;
+        font-weight: bold;
+    }
+
+    .classdropdown{
+        margin-right: 30px;
+    }
+
+    #classdrop{
+        width:150px;
+        height: 35px;
+        font-size: 20px;
+        border: 1px solid #9B9B9B ;
+        border-radius: 10px;
+    }
+
+    .Purchase{
+        font-weight: bold;
+        margin-left: 10px;
+
+    }
+    .monthyear{
+        width : 150px;
+        border: 1px solid #9B9B9B ;
+        margin-right: 30px;
+    }
+
+    .collarupload{
+        margin-left: 20px;
+        font-weight: bold ;
+    }
+
+    #uploadimg{
+        font-size: 15px;
+    } 
+
+    .collarBill{
+        margin-left: 40px;
+        font-weight: bold;
+    }
+
+    #uploadBill{
+        font-size: 15px;
+    }  
+
+    
+
+}
+

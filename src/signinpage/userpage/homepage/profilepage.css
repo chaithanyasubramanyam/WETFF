@@ -1,0 +1,20 @@
+.navbar__link{
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color:black;
+    border-top: 1px solid rgba(225,225, 225, .2);
+    border-bottom: 1px solid  rgba(225,225, 225, .2);
+    padding-left: 30px;
+    transition: .3s;
+    
+}
+
+
+.profiletitle{
+    text-align: center;
+    margin-top: 20px;
+}

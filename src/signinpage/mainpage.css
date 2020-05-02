@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+.h11{
+    text-align: center;
+    padding-top: 100px;
+    color: black;
+    opacity: 24;
+    padding-bottom: 60px;
+}
+.mainpage{
+   text-align: center;
+   min-height: 20vh;
+    
+}
+
+.mainpagecontent{
+    background-color: #F1EFEF;
+    padding-bottom: 200px;
+}
+
+.userlog1{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 25px; 
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    
+}
+
+
+
+
+.userlog{
+    width: 30%;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration: none;
+    background-color: #605F5F;
+    border-radius: 20px;
+}
+.userlog :hover{
+    text-decoration: none;
+}
+
+.userlog1  :hover{
+    background-color: none;
+}
+
+.admin{
+    width: 20%;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration: none;
+    background-color: #605F5F;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.admin :hover{
+    text-decoration: none;
+
+}
+
+.adminlog{
+    color : white;
+}
+
+.adminlog :hover{
+    color : white;
+}
+.vendor{
+    margin-top: 20px;
+    width: 20%;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration: none;
+    background-color: #605F5F;
+    border-radius: 20px;
+    
+}
+.vendor :hover{
+    text-decoration: none;
+
+}
+
+.vendorlog{
+    color : white;
+}
+
+.vendorlog :hover{
+    color : rgb(245, 242, 91);
+}
+
+
+
+
+
+@media (max-width:858px){
+    .h11{
+        font-size: 20px;
+        padding-bottom: 55px;
+        padding-top: 100px;
+        font-weight: bold;
+    }
+
+    .userlog1{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 15px; 
+        border-radius: 8px;
+        background-color: #605F5F;;
+    }
+
+    .userlog{
+        width: 50%;
+    }
+
+    .mainpagecontent{
+        background-color: #F1EFEF;
+        padding-bottom: 20px;
+    }
+}

@@ -1,0 +1,8 @@
+.admintable{
+    text-align: center;
+    border: 2px solid black;
+}
+
+.admintable thead tr{
+    background-color: blanchedalmond;
+}
