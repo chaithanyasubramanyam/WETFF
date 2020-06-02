@@ -1,9 +1,8 @@
 import React from 'react';
 import './collarpage.css';
 import {Link} from 'react-router-dom';
-import {Container, Row, Col, Button} from 'react-bootstrap';
-import fire from '../../../firebase/config'
-// import { MonthSelector } from 'react-bootstrap-month-selector';
+import {Container, Row, Col} from 'react-bootstrap';
+import fire from '../../../firebase/config';
 
 
 
@@ -81,6 +80,7 @@ export default class Collar extends React.Component{
 
     submitcollar = (e) => {
         e.preventDefault()
+        console.log(this.state.useremail)
         fire.firestore().collection('user').doc(this.state.useremail).set({
             Class : this.state.Class,
             Brand : this.state.Brand,
@@ -89,8 +89,6 @@ export default class Collar extends React.Component{
             Billimgurl: this.state.Billimgurl,
             Uploadimgurl: this.state.Uploadimgurl
         })
-
-
     }
 
 
@@ -111,7 +109,7 @@ export default class Collar extends React.Component{
                     <ul className='cnav1ul'>
                         <li><Link to = '/user/home' className="headback">Back</Link></li>
                         <li className='headcollar'>Collar</li>
-                        <li className='headsecure'>secure</li>
+                        <li className='headsecure'><a>Secure</a></li>
                     </ul>
                 </nav>
 

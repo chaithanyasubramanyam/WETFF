@@ -21,7 +21,6 @@
 
 .nav1 ul{
     text-align: center;
-    margin-right : 400px;
     }
 
 .nav1 li {
@@ -67,7 +66,7 @@
 .toggle :hover{
     opacity: 0.9;
     color : rgb(238, 237, 201);
-    border:w rgb(250, 250, 250);
+    border: rgb(250, 250, 250);
     color:rgb(232, 238, 243);
     transition: .2s;
     padding: 1px;
@@ -77,6 +76,27 @@
     display: none;
 }
 
+.homelogout{
+    position: absolute;    
+    margin-left: 100%;
+    margin-top: 15px;
+    transform: translate(-200%);
+    font-family: Verdana, sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    text-transform: uppercase;
+    color :rgb(230, 210, 210);
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+
+
+}
+
+.homelogout :active{
+    text-decoration: none;
+    outline: none;
+}
 
 
 /* nav2 css code */
@@ -107,20 +127,23 @@
 
 }
 .searchtxt{
-    margin-left: 100px;
+    margin-left: 285px;
     border:4px solid #dbd7e9;
     border-right: none;
     padding-left: 10px;
-    padding-right: 250px;
+    padding-right: 300px;
     margin-top: 5px;
+    outline: 0px;
 }
+
+
+
 .searchBtn{
     border:3px solid #dfdde7;
     height: 25px;
     width:30px;
     color:#464255;
     padding: 9.5px;
-
 }
 
 
@@ -287,26 +310,26 @@
         display: none;
     }
 
-    /* .togglebtn{
-        display: inline;
-    } */
+    
 
     .togglebtn{
         display: initial;
         position: absolute;
-        color :rgb(48, 72, 184);
+        color:rgb(232, 238, 243);
         margin-left: 15px;
         margin-top: 10px;
         width: 100px;
         opacity: 0.7;    
     }
-    
 
+    .homelogout{
+        display: none;
+    }
 
     .nav1 li {
             display : inline;
             margin-right: 0px; 
-            margin-left: 50px;       
+            margin-left: 40px;       
     }
         
     .nav1 li a{
@@ -335,14 +358,14 @@
     }
 
     .nav2img{
-        margin-left: 4px;
+        margin-left: 12px;
     }
 
     .nav2logo{
         height : 25px;
         margin-right: 7px;
         text-decoration: none;
-        font-size: 36px; 
+        font-size: 30px; 
     }
 
     .nav2srch{
@@ -495,7 +518,7 @@
         margin-top: 40px;
         margin-left: 2.5%;
         margin-right: 0px;
-        width: 100%;
+        width: 98%;
         height: 200px;
         background-color:rgb(253, 239, 239);
     }
@@ -504,7 +527,7 @@
         background-color:rgb(253, 239, 239);
     
     }
-
+    
     
 
     

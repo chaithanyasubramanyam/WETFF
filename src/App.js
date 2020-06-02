@@ -1,12 +1,10 @@
 import React from 'react';
-// import Homepage from './homepage/homepage'
-// import Collar from './Collarpage/collarpage'
 import Main from './signinpage/mainpage'
 import Vendorpage from './signinpage/vendorpage/vendorpage';
 import Userpage from './signinpage/userpage/userpage';
 import Adminpage from './signinpage/adminpage/adminpage';
 import {Switch,Route,Redirect} from 'react-router-dom';
-import Collar from './signinpage/userpage/Collarpage/collarpage';
+import Collar from './signinpage/userpage/Collarpage/collarpage1';
 import Homepage from './signinpage/userpage/homepage/homepage';
 import Profilepage from './signinpage/userpage/homepage/profilepage'
     

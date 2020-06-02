@@ -6,3 +6,49 @@
 .admintable thead tr{
     background-color: blanchedalmond;
 }
+
+.mobtable{
+    display: none
+}
+
+.mobvalued{
+    display: none
+}
+
+@media (max-width:858px){
+    .admintable{
+        display: none
+    }
+    .mobtable{
+        display: initial;
+    }
+
+    .mobcontainer{
+        margin: 5px;
+        padding: 2px;
+        border: 2px solid black;
+    }
+    
+    .mobtablerow{
+        line-height: 40px;
+        text-align: center;
+        padding: 3px
+    }
+    .vendorinp{
+        width: 60px;
+        height : 30px;
+    }
+
+    .mobvalued{
+        display: initial
+    }
+
+    .mobvalue{
+        margin-left: 50%;
+        transform: translate(-25%);
+        padding: 20px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+}

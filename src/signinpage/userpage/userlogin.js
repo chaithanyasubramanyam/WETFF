@@ -6,6 +6,7 @@ class Userlogin extends Component {
     constructor(props){
         super(props);
         this.state = {
+            typeuser:this.props.typeuser,
             email : '',
             password : '',
             fireErrors : '',
@@ -25,8 +26,7 @@ class Userlogin extends Component {
         await fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .catch((error)=>{
             this.setState({fireErrors: error.message})
-        })
-        
+        })  
     }
 
         
@@ -38,8 +38,14 @@ class Userlogin extends Component {
         await fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .catch((error)=>{
             this.setState({fireErrors: error.message})
+        }).then((user)=>{
+            const adduserrole = fire.functions().httpsCallable('userrole');
+            adduserrole({uid: user.user.uid , role: 'user' })
+        }).then(()=>{
+            fire.auth().signOut();
         })
         
+
     }
 
     getAction = action => {
@@ -50,20 +56,30 @@ class Userlogin extends Component {
         }
     }
 
+
     googlelog = async e =>{
         e.preventDefault();
         var provider = new fire.auth.GoogleAuthProvider();
-        await fire.auth().signInWithPopup(provider).then(function(result) {
+        await fire.auth().signInWithPopup(provider).then((result) => {
             var token = result.credential.accessToken;
-
             var user = result.user;
-            // ...
-            
-
-          }).then(console.log(this.state.gmail)).catch((error)=>{
+            user.getIdTokenResult().then(idtokenresult=>{
+                if(idtokenresult.claims.role){
+                    console.log(idtokenresult.claims.role)
+                    window.location.reload(true);
+                }else{
+                    console.log(user)
+                    this.setState({fireErrors: 'Please wait'})
+                    const adduserrole = fire.functions().httpsCallable('userrole');
+                    adduserrole({uid: user.uid , role: 'user' }).then(()=>{
+                        this.setState({fireErrors: 'You are a user now. Please login again'})
+                    })
+                }
+              })
+          }).catch((error)=>{
             this.setState({fireErrors: error.message})
-
         }) 
+        
         
     }
 

@@ -9,6 +9,7 @@
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "firebase": "^7.14.1",
+    "mdbreact": "^4.27.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-bootstrap-month-selector": "^0.2.0",
@@ -16,7 +17,8 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "react-typing-effect": "^2.0.3"
+    "react-typing-effect": "^2.0.3",
+    "semantic-ui-react": "^0.88.2"
   },
   "scripts": {
     "start": "react-scripts start",

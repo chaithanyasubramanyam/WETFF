@@ -2,15 +2,20 @@ import React, {Component} from 'react';
 import fire from '../../firebase/config';
 import './vendorhomepage.css';
 import {Link} from 'react-router-dom';
-import {Table} from 'react-bootstrap'
+import {Table} from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
+import Media from 'react-bootstrap/Media';
+import {Container,Col,Row} from 'react-bootstrap';
+
 
 
 class Vendorhome extends Component {
   constructor(props){
     super(props);
     this.ref = fire.firestore().collection('user');
+    this.refven = fire.firestore().collection('vendor');
     this.unsubscribe = null;
-    
+    this.unsubscribeven = null;
     this.state = {
       vendoremail : this.props.vendoremail,
       userdata : [],
@@ -18,33 +23,48 @@ class Vendorhome extends Component {
       vinp1 : '',
       vinp2 : '',
       vinp3 : '',
+      updateduserdata: [],
      
     };
-    
-   
   }
 
   onCollectionUpdate = (querySnapshot) => {
     const userdata = [];
-
+    const vendordata = this.state.vendordata;
     querySnapshot.forEach((doc) => {
       const {
         Billimgurl,Brand, Class,
       Model,
       Monthyear,
       Uploadimgurl,
-      
       } = doc.data();
       userdata.push({Billimgurl,Brand, Class,
         Model,
         Monthyear,
         Uploadimgurl,
         id : doc.id,
-        sub : 'submit'
       });
+      vendordata[doc.id] = {vinp1:'',vinp2:'',vinp3:''}
     });
+
+    this.setState({vendordata:vendordata});
     this.setState({userdata:userdata});
   }
+  onCollectionUpdateven = (querySnapshot) =>{
+    querySnapshot.forEach((doc) => {
+      this.state.userdata.map((data,index)=>{
+        if (data.id === doc.id){
+          let remove = this.state.userdata.splice(index,1)
+          this.state.updateduserdata.push(remove[0])
+        }
+      })
+      });
+    this.setState({userdata: this.state.userdata});
+    this.setState({updateduserdata: this.state.updateduserdata})
+  }
+
+
+
 
   handleChange=(e,id,inp)=>{
     
@@ -61,21 +81,37 @@ class Vendorhome extends Component {
   
 
   componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);  
+    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+    this.unsubscribeven =  this.refven.onSnapshot(this.onCollectionUpdateven)
+    
   }
 
 
-  vendorsubmit=(e,id,sub)=>{
-
+  vendorsubmit=(e,id,index)=>{
     e.preventDefault();
     
+    let updateduserdata = this.state.updateduserdata
+    let removed = this.state.userdata.splice(index,1)
+    updateduserdata.push(removed[0])
+    
+    this.setState({userdata:this.state.userdata,updateduserdata:updateduserdata})
+
     const vendorsub = this.state.vendordata[id]
-    console.log(vendorsub)
-    console.log(this.state.userdata.map((data)=>{
-      if(data.id === id){
-        return data.sub
-      }
-    }))
+      
+    fire.firestore().collection('vendor').doc(id).set({
+              vinp1 : vendorsub.vinp1,
+              vinp2 : vendorsub.vinp2,
+              vinp3 : vendorsub.vinp3
+
+  })
+  }
+
+  changesubmit=(e,id)=>{
+    e.preventDefault();
+    
+
+    const vendorsub = this.state.vendordata[id]
+      
     fire.firestore().collection('vendor').doc(id).set({
               vinp1 : vendorsub.vinp1,
               vinp2 : vendorsub.vinp2,
@@ -86,7 +122,11 @@ class Vendorhome extends Component {
 
   
 
-  logout = () => {
+  
+
+  
+
+  vendorlogout = () => {
     fire.auth().signOut();
   }
     
@@ -95,6 +135,7 @@ class Vendorhome extends Component {
           
           <div>
             <nav className='nav1'>
+                <div className='homelogout' onClick={this.vendorlogout}>Logout</div>
                 <Link to='#'><div className='toggle'><i class="fa fa-bars fa-2x"></i></div></Link>
                 <Link to='#'><div className='togglebtn'><i class="fa fa-bars"></i></div></Link>
                     <ul className='honavul'>
@@ -142,6 +183,50 @@ class Vendorhome extends Component {
               <tbody>
                 {this.state.userdata.map((data,index) =>
                   <tr key={index}>
+                   <td>{data.Brand}</td>
+                    <td>{data.Class}</td>
+                    <td>{data.Model}</td>
+                    <td>{data.Monthyear}</td>
+                    <td><a href={data.Billimgurl}>image1</a></td>
+                    <td><a href={data.Uploadimgurl}>image2</a></td>
+                    <td><div><input type='number' className='vendorinp' value={this.state.vendordata[data.id]['vinp1']} onChange={e=>this.handleChange(e,data.id,'vinp1')}
+                    name='vendorinp1' />
+                    </div></td>
+                    <td><div><input type='number' className='vendorinp' value={this.state.vendordata[data.id]['vinp2']} onChange={e=>this.handleChange(e,data.id,'vinp2')}
+                    name='vendorinp2' />
+                    </div></td>
+                    <td><div><input type='number' className='vendorinp' value={this.state.vendordata[data.id]['vinp3']} onChange={e=>this.handleChange(e,data.id,'vinp3')}
+                     name='vendorinp3' />
+                    </div></td>
+                    <td><div><input type='submit' className='vendorsubmit' onClick={e=>this.vendorsubmit(e,data.id,index)} value={data.sub}/>
+                    </div></td>
+
+
+                  </tr>
+                )}
+              </tbody>
+              </Table>
+
+
+              <Table responsive className="vendortable">
+              <thead>
+                <tr>
+          
+                <th>Brand</th>
+                <th>Class</th>
+                <th>Model</th>
+                <th>Monthyear</th>
+                <th colSpan="2">Images</th>
+                <th>value</th>
+                <th>depr</th>
+            <th>salvage</th>
+            <th>submit</th>
+            </tr>
+              </thead>
+
+              <tbody>
+                {this.state.updateduserdata.map((data,index) =>
+                  <tr key={index}>
                     
                     <td>{data.Brand}</td>
                     <td>{data.Class}</td>
@@ -156,39 +241,105 @@ class Vendorhome extends Component {
                     name='vendorinp2' />
                     </div></td>
                     <td><div><input type='number' className='vendorinp'onChange={e=>this.handleChange(e,data.id,'vinp3')}
-                     name='vendorinp3' />
+                    name='vendorinp3' />
                     </div></td>
-                    <td><div><input type='submit' className='vendorsubmit' onClick={e=>this.vendorsubmit(e,data.id,'sub')} value={data.sub}/>
+                    <td><div><input type='submit' className='vendorsubmit' onClick={e=>this.changesubmit(e,data.id,index)} value='Change'/>
                     </div></td>
 
-
-                  </tr>
-                )}
-              </tbody>
-              </Table>
-
-
-              <Table responsive className="vendortable">
-              <thead>
-            <tr>
-          
-            <th>Brand</th>
-            <th>Class</th>
-            <th>Model</th>
-            <th>Monthyear</th>
-            <th colSpan="2">Images</th>
-            <th>value</th>
-            <th>depr</th>
-            <th>salvage</th>
-            <th>submit</th>
-            </tr>
-              </thead>
+                 </tr>
+                  )}
+                  </tbody>
 
               </Table>
 
+              
 
+              {/* MOBILEVERSION */}
+
+              
+              {this.state.userdata.map((data,index) => 
+              <div className='mobtable'>
+                
+              <Container className='mobcontainer'>
+              <Row className='mobtablerow'>
+              <Col>{data.Brand}</Col>
+              <Col>{data.Class}</Col>
+              <Col>{data.Model}</Col>
+              </Row>
+              <Row className='mobtablerow'>
+              <Col>{data.Monthyear}</Col>
+              <Col><a href={data.Billimgurl}>image1</a></Col>
+              <Col><a href={data.Uploadimgurl}>image2</a></Col>
+              </Row>
+              <Row className='mobtablerow'>
+              <Col><input type='number' className='vendorinp' value={this.state.vendordata[data.id]['vinp1']} onChange={e=>this.handleChange(e,data.id,'vinp1')}
+                    name='vendorinp1' /></Col>
+              <Col><input type='number' className='vendorinp' value={this.state.vendordata[data.id]['vinp2']} onChange={e=>this.handleChange(e,data.id,'vinp2')}
+                    name='vendorinp2' /></Col>
+              <Col><input type='number' className='vendorinp' value={this.state.vendordata[data.id]['vinp3']} onChange={e=>this.handleChange(e,data.id,'vinp3')}
+                     name='vendorinp3' /></Col>
+              </Row>
+              <Row className='mobtablerow'>
+              <Col></Col>
+              <Col><input type='submit' className='vendorsubmit' onClick={e=>this.vendorsubmit(e,data.id,index)} value={data.sub}/></Col>
+              <Col></Col>
+             
+              </Row>
+
+              </Container>
             
-            <button onClick={this.logout}>logout</button>
+              </div>
+              )}
+              
+
+              <div className='mobvalued'><div className='mobvalue'>VALUED</div></div>
+
+
+
+
+
+
+
+
+
+              {this.state.updateduserdata.map((data,index) => 
+              <div className='mobtable'>
+                
+              <Container className='mobcontainer'>
+              <Row className='mobtablerow'>
+              <Col>{data.Brand}</Col>
+              <Col>{data.Class}</Col>
+              <Col>{data.Model}</Col>
+              </Row>
+              <Row className='mobtablerow'>
+              <Col>{data.Monthyear}</Col>
+              <Col><a href={data.Billimgurl}>image1</a></Col>
+              <Col><a href={data.Uploadimgurl}>image2</a></Col>
+              </Row>
+              <Row className='mobtablerow'>
+              <Col><input type='number' className='vendorinp' onChange={e=>this.handleChange(e,data.id,'vinp1')}
+                    name='vendorinp1' /></Col>
+              <Col><input type='number' className='vendorinp' onChange={e=>this.handleChange(e,data.id,'vinp2')}
+                    name='vendorinp2' /></Col>
+              <Col><input type='number' className='vendorinp'onChange={e=>this.handleChange(e,data.id,'vinp3')}
+                    name='vendorinp3' /></Col>
+              </Row>
+              <Row className='mobtablerow'>
+              <Col></Col>
+              <Col><input type='submit' className='vendorsubmit' onClick={e=>this.changesubmit(e,data.id,index)} value='Change'/></Col>
+              <Col></Col>
+             
+              </Row>
+
+              </Container>
+            
+              </div>
+              )}
+              
+              
+              <button className='' onClick={this.vendorlogout}>Logout</button>
+            
+
             
           </div>
       )}

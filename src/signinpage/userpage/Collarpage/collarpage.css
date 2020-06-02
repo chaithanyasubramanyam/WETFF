@@ -1,9 +1,10 @@
+
 .collarpage{
     background-color: #F2F5F5;
 }
 
 .cnav1{
-    line-height: 80px;
+    line-height: 60px;
     background-color: #DEDEE1;
 }
 
@@ -29,33 +30,39 @@
 
 .headcollar{
     margin-top: 3px;
-    margin-left: 5%;
-    margin-right: 40px;
+    margin-left: 30%;
+    margin-right: 30px;
     padding-left: 20px;
     padding-right: 20px;
     font-size: 27px;
     font-weight: bold;
     color: rgb(77, 26, 90);
-    font-family: Andale Mono, monospace;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
-    background-color: rgb(220, 220, 233);
-    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    background-color: #DEDEE1;
+    border-radius: 5px;
 }
 
 .headsecure{
     margin-top: 3px;
-    margin-left: -2.5%;
+    margin-left: 0px;
     margin-right:40px; 
     padding-left: 15px;
     padding-right:15px;
     font-size: 27px;
     font-weight: bold;
     color: rgb(90, 57, 99);
-    font-family: Andale Mono, monospace;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
-    background-color: rgb(225, 225, 230);
-    border-radius: 20px;
-    
+    font-family: Arial;
+    background-color: #DEDEE1;
+    border-radius: 5px; 
+}
+
+.headsecure :hover{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    background-color: #DEDEE1;
+    border-radius: 5px;
+    padding : 15px;
+    cursor: pointer;
 }
 
 /* collar */
@@ -66,45 +73,45 @@
 }
 
 .class{
-    margin-left:110px;
+    margin-left:280px;
     font-weight:bold;
 }
 
 .classdropdown{
-    margin-right:350px;
+
 }
 
 #classdrop{
-    width:140px;
-    height: 35px;
+    width:200px;
+    height: 40px;
     font-size: 20px;
     border: 1px solid #9B9B9B ;
-    border-radius: 15px;
+    outline: 0px;
 }
 
 .Purchase{
     font-weight: bold;
-    margin-left: 110px;
+    margin-left: 280px;
 
 }
 .monthyear{
-    width : 30%;
+    width : 200px;
     border: 1px solid #9B9B9B ;
-    margin-right: 30px;
+    outline: 0px;
+    height: 40px;
 }
 
 .collarupload{
-    margin-left: 100px;
+    margin-left: 280px;
     font-weight: bold ;
 }
 
 #uploadimg{
-    
     font-size: 15px;
 } 
 
 .collarBill{
-    margin-left: 40px;
+    margin-left: 280px;
     font-weight: bold;
 }
 
@@ -121,7 +128,12 @@
 .retrivebtn{
     font-size: 20px;
     margin-bottom: 20px;
-    
+}
+
+.classSubmit{
+    margin-top: 50px;
+    margin-left: 50%;
+    transform: translate((50%));
 }
 
 
@@ -129,7 +141,7 @@
 
 @media (max-width:858px){
     .cnav1{
-        line-height: 60px;
+        line-height: 50px;
         background-color: rgb(213, 213, 228);
     }
 
@@ -138,9 +150,9 @@
 
     .headback{
         margin-left: 0px;
-        padding-left: 20px;
+        padding-left: 15px;
         margin-right: 0px;
-        font-size: 15px;
+        font-size: 10px;
         padding-right : 0px;
         color: black;
         font-family: Arial;
@@ -152,21 +164,28 @@
         margin-right: 20px;
         padding-left: 20px;
         padding-right: 20px;
-        font-size: 25px;
+        font-size: 20px;
         font-weight: bold;
         color: black;
-        font-family: Andale Mono, monospace;
-        box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+        font-family: Arial;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
         background-color: #DEDEE1;
         border-radius: 5px;
     }
 
     .headsecure{
-        margin-left: 10px;
-        font-size: 25px;
+        font-size: 20px;
         color: black;
-        font-family: Arial;
-        
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 5px;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+        background-color: #DEDEE1;
+        border-radius: 5px;
+
+    }
+
+    .headsecure :hover{
+        display: none;
     }
 
     /* collar */
@@ -177,7 +196,7 @@
     }
 
     .class{
-        margin-left: 40px;
+        margin-left: 10px;
         font-weight: bold;
     }
 
@@ -190,7 +209,6 @@
         height: 35px;
         font-size: 20px;
         border: 1px solid #9B9B9B ;
-        border-radius: 10px;
     }
 
     .Purchase{
@@ -200,12 +218,13 @@
     }
     .monthyear{
         width : 150px;
+        height: 35px;
         border: 1px solid #9B9B9B ;
         margin-right: 30px;
     }
 
     .collarupload{
-        margin-left: 20px;
+        margin-left: 10px;
         font-weight: bold ;
     }
 
@@ -214,7 +233,7 @@
     } 
 
     .collarBill{
-        margin-left: 40px;
+        margin-left: 10px;
         font-weight: bold;
     }
 

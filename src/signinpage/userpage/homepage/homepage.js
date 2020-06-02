@@ -2,7 +2,7 @@ import React from 'react';
 import './homepage.css';
 import PieChart from './piechart';
 import Linear from './lineargraph';
-
+import fire from '../../../firebase/config'
 import {Link} from 'react-router-dom'
 
 
@@ -15,12 +15,17 @@ export default class Homepage extends React.Component{
         }
     }
 
+    homelogout=()=>{
+        fire.auth().signOut()
+    }
+
 
 
     render(){
         return(
             <div>
                 <nav className='nav1'>
+                <div className='homelogout' onClick={this.homelogout}>Logout</div>
                 <Link to='/profile'><div className='toggle'><i class="fa fa-bars fa-2x"></i></div></Link>
                 <Link to='/profile'><div className='togglebtn'><i class="fa fa-bars"></i></div></Link>
                     <ul className='honavul'>
@@ -28,6 +33,7 @@ export default class Homepage extends React.Component{
                         <li><a href='#'>Market</a></li>
                         <li><a href='#'>Value</a></li>
                     </ul>
+                    
                 </nav>
             <div className='nav2'>
                 <div className='nav2img'>

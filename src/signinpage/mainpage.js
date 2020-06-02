@@ -30,18 +30,18 @@ export default class Main extends React.Component{
                 <div className="mainpage">
                 
                 <div className="userlog">
-                <Link to='/Userlogin' className="userlog1"><div >Login as USER</div> </Link>
+                <Link to = {{ pathname:  '/Userlogin', state: {typeuser: 'user' }}} className="userlog1"><div >Login as USER</div> </Link>
                 </div> 
                 </div> 
                 
 
 
                 <div className="admin">
-                <Link to='/Adminlogin' className="adminlog"><div >Login as ADMIN</div> </Link>
+                <Link to = {{ pathname:  '/Adminlogin', state: {typeuser: 'admin' }}} className="adminlog"><div >Login as ADMIN</div> </Link>
                 
                 </div>
                 <div className="vendor">
-                <Link to='/Vendorlogin' className="vendorlog"><div >Login as VENDOR</div> </Link>
+                <Link to = {{ pathname:  '/Vendorlogin', state: {typeuser: 'vendor' }}} className="vendorlog"><div >Login as VENDOR</div> </Link>
                 
                 </div>
 

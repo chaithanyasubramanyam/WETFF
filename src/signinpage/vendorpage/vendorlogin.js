@@ -6,11 +6,12 @@ class Vendorlogin extends Component {
     constructor(props){
         super(props);
         this.state = {
+            typeuser:this.props.typeuser,
             email : '',
             password : '',
             fireErrors : '',
             formtitle : 'Vendor Login',
-            loginbtn : true
+            loginbtn : true,
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -26,14 +27,7 @@ class Vendorlogin extends Component {
         .catch((error)=>{
             this.setState({fireErrors: error.message})
         })
-        console.log(this.state.fireErrors)
-        if (this.state.fireErrors === ''){
-            fire.firestore().collection('vendor').add({
-                name : this.state.email,
-            })
-        }else{
-            console.log('cannot add into data')
-        }
+        
         
     }
 
@@ -46,32 +40,35 @@ class Vendorlogin extends Component {
         await fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .catch((error)=>{
             this.setState({fireErrors: error.message})
+        }).then((user)=>{
+            const adduserrole = fire.functions().httpsCallable('userrole');
+            adduserrole({uid: user.user.uid , role: 'vendor' })
+        }).then(()=>{
+            fire.auth().signOut();
         })
-        console.log(this.state.fireErrors)
-        if (this.state.fireErrors === ''){
-            fire.firestore().collection('vendor').add({
-                name : this.state.email,
-                clge : 'IITM'
-            })
-        }else{
-            console.log('cannot add into data')
-        }
     }
 
     googlelog = async e =>{
         e.preventDefault();
         var provider = new fire.auth.GoogleAuthProvider();
-        await fire.auth().signInWithPopup(provider).then(function(result) {
+        await fire.auth().signInWithPopup(provider).then((result)=>{
             var token = result.credential.accessToken;
-
             var user = result.user;
-            // ...
-            console.log(token)
-            console.log(user.email)
+            user.getIdTokenResult().then(idtokenresult=>{
+                if(idtokenresult.claims.role){
+                    console.log(idtokenresult.claims.role)
+                    window.location.reload(true);
+                }else{
+                    console.log(user)
+                    this.setState({fireErrors: 'Please wait'})
+                    const adduserrole = fire.functions().httpsCallable('userrole');
+                    adduserrole({uid: user.uid , role: 'vendor' })
+                    this.setState({fireErrors: 'You are a vendor now. Please login again'})
+                }
+              })
           }).catch((error)=>{
             this.setState({fireErrors: error.message})
         }) 
-
     }
 
     getAction = action => {

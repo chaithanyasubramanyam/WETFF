@@ -6,11 +6,13 @@ import fire from '../../firebase/config'
 
 
 
-export default class Userpage extends React.Component{
+export default class Adminpage extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      user: null
+      user: null,
+      typeuser : this.props.location.state.typeuser,
+      role: '',
     }    
   }
 
@@ -18,9 +20,16 @@ export default class Userpage extends React.Component{
     this.authListener();
   }
 
-  authListener(){
+  
+
+  authListener (){
     fire.auth().onAuthStateChanged((user) => {
+      console.log(user)
       if (user){
+        user.getIdTokenResult().then(idtokenresult=>{
+          console.log(idtokenresult.claims.role)
+          this.setState({role:idtokenresult.claims.role})
+        })
         this.setState({user});
     }else{
       this.setState({user:null});
@@ -28,10 +37,30 @@ export default class Userpage extends React.Component{
     })
 
   }
+
+
+
   render(){
+      var openpage = ()=>{
+        if (this.state.role==='owner' && this.state.user != null){
+          return (
+            <div>
+              <Adminhome />
+            </div>
+          )
+        }else{
+          return (
+            <div>
+              <Adminlogin typeuser={this.state.typeuser}/>
+            </div>
+          )
+
+        }
+      }
+
       return (
           <div>
-            {this.state.user ? (<Adminhome/>) : (<Adminlogin/>)}
+            {openpage()}
           </div>
       )}
 }

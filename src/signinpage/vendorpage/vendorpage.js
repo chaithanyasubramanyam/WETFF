@@ -1,6 +1,6 @@
 import React from 'react';
 import Vendorlogin from './vendorlogin';
-import Vendorhome from './vendorhomepage';
+import Vendorformhome from './vendorformhome';
 import {Link} from 'react-router-dom';
 import fire from '../../firebase/config'
 
@@ -11,17 +11,22 @@ export default class Vendorpage extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      user: null
+      user: null,
+      typeuser : this.props.location.state.typeuser,
+      role : ''
     }    
   }
 
   componentDidMount(){
     this.authListener();
   }
-
   authListener(){
     fire.auth().onAuthStateChanged((user) => {
       if (user){
+        user.getIdTokenResult().then(idtokenresult=>{
+          console.log(idtokenresult.claims.role)
+          this.setState({role:idtokenresult.claims.role})
+        })
         this.setState({user});
     }else{
       this.setState({user:null});
@@ -30,9 +35,25 @@ export default class Vendorpage extends React.Component{
 
   }
   render(){
+    var openpage = ()=>{
+      if (this.state.role==='vendor'&&this.state.user != null){
+        return (
+          <div>
+            <Vendorformhome vendoremail = {this.state.user.email} />
+          </div>
+        )
+      }else{
+        return (
+          <div>
+            <Vendorlogin typeuser={this.state.typeuser}/>
+          </div>
+        )
+
+      }
+    }
       return (
           <div>
-            {this.state.user ? (<Vendorhome vendoremail={this.state.user.email}/>) : (<Vendorlogin/>)}
+            {openpage()}
           </div>
       )}
 }
