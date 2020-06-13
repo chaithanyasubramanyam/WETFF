@@ -119,7 +119,7 @@ export default class Stocks extends React.Component {
     await instance.methods
       .addUserData(
         this.state.Type,
-        this.state.Class,
+        6,
         this.state.Time,
         this.state.Horizon
       )

@@ -120,7 +120,7 @@ export default class RealEstate extends React.Component {
     await instance.methods
       .addUserData(
         this.state.Type,
-        this.state.Class,
+        7,
         this.state.Size,
         this.state.Area
       )

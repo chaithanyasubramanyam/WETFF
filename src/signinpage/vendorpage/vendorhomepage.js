@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import fire from "../../firebase/config";
 import "./vendorhomepage.css";
 import { Link } from "react-router-dom";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import Media from "react-bootstrap/Media";
 import { Container, Col, Row } from "react-bootstrap";
 import web3 from "../../ethereum/web3";
 import instance from "../../ethereum/wetff";
+import _ from "lodash";
+import Table_header from './components/table_header';
+
 
 class Vendorhome extends Component {
   constructor(props) {
@@ -27,37 +30,62 @@ class Vendorhome extends Component {
       vendormetamask: "",
     };
   }
+  quering = () => {
+    this.unsubscribe = this.ref.onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          if (doc.id == this.state.vendoremail) {
+            console.log(doc.id)
+            const { email,metamask, name,
+              phone,
+              role,
+              vendorclass } = doc.data()
+            this.setState({ vendorclass: vendorclass});
+            this.setState({ vendormetamask: metamask });
+            console.log("log from firebase",this.state.vendorclass);
+          }
+        })
+      })
+  }
 
-  onCollectionUpdate = (querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      if (doc.id == this.state.vendoremail) {
-        this.setState({ vendorclass: doc.data.vendorclass });
-        this.setState({ vendormetamask: doc.data.metamask });
-        console.log(this.state.vendorclass);
-      }
-    });
-  };
+  blockchainquering = async() => {
+     
+    console.log("Log from blockchain query",this.state.vendorclass);
+    const _class = parseInt(this.state.vendorclass);
+    console.log(_class)
+    
 
-  async componentDidMount() {
-    // fetch class varible form firebase of this perticular user
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
-
-    const _class = this.state.vendorclass;
-    // user that class varible to fetch data of user mapped to that perticular class => arr of that struct[]
-
-    const length = await instance.methods.getUserValuesLength(1).call();
+    const length = await instance.methods.getUserValuesLength(_class).call();
 
     const result = await Promise.all(
       Array(parseInt(length))
         .fill()
         .map((element, index) => {
-          return instance.methods.userdataMap(1, index).call();
+          return instance.methods.userdataMap(_class, index).call();
         })
     );
 
     this.setState({ result });
-    //before rendering in the vendor, lets check on vendor!
+    
     console.log(this.state.result);
+  }
+
+  
+
+  componentDidMount=()=>{
+    // fetch class varible form firebase of this perticular user
+    this.quering();
+    // var bounce = _.debounce(() => {
+    //   this.blockchainquering()
+    // }, 10);
+    // bounce();
+    
+  }
+
+  componentDidUpdate = async()=>{
+    var a = this.state.result
+    if (a.length == 0){
+     this.blockchainquering();
+    } 
   }
 
   //   const requests = await Promise.all(
@@ -121,10 +149,25 @@ class Vendorhome extends Component {
   render(props) {
     return (
       <div>
-        {this.state.result.map((data, index) => (
-          <div>{data.model}</div>
-        ))}
-        {/* <nav className="nav1">
+        
+        {/* {this.state.result.map((data, index) => (
+          <div>{data.model}
+          <br/>
+          {data.date}
+          <br/>
+          {data.brand}
+          <hr/>
+          </div>
+          
+        ))} */}
+
+        {/* <div onClick={this.vendorlogout}>
+          <Button>LOGOUT</Button>  
+        </div> */}
+
+
+        
+      <nav className="nav1">
           <div className="homelogout" onClick={this.vendorlogout}>
             Logout
           </div>
@@ -173,69 +216,66 @@ class Vendorhome extends Component {
             </select>
           </div>
         </div>
-        <Table responsive className="vendortable">
-          <thead>
-            <tr>
-              <th>Brand</th>
-              <th>Class</th>
-              <th>Model</th>
-              <th>Monthyear</th>
-              <th colSpan="2">Images</th>
-              <th>value</th>
-              <th>depr</th>
-              <th>salvage</th>
-              <th>sort</th>
-            </tr>
-          </thead>
-        <tb<tbo
- e           {this.state.reuserdataap((data, index) => (
-              <tr key={index}>
-                <td>{data.Brand}</td>
-                <td>{data.Class}</td>
-                <td>{data.Model}</td>
-                <td>{data.Monthyear}</td>
-                {/d>
-                  <a href={data.Billimgurl}>image1</a>
-                </td>
-                <td>
-                  <a href={data.Uploadimgurl}>image2</a>
-                </td> *               <t                     {/iv>
-                    <input
+        
+          {/* This is the table header */}
+          <Table className='vendortable'>
+          <Table_header ClassValue={this.state.vendorclass} />
+          
+          <tbody>
+            {this.state.result.map((data,index)=>{
+              return (<tr>
+                <td>{data.userAddress}</td>
+                <td>{data.model}</td>
+                <td>{data.brand}</td>
+                <td>{data.date}</td>
+                <td>image</td>
+                <td>image</td>
+                <td><input
                       type="number"
                       className="vendorinp"
-                      value={this.state.vendordata[data.id]["vinp1"]}
-                      onChange={(e) => this.handleChange(e, data.id, "vinp1")}
+                      // value={this.state.vendordata[data.id]["vinp1"]}
+                      // onChange={(e) => this.handleChange(e, data.id, "vinp1")}
+                      name="vendorinp1"
+                    /></td>
+
+              <td>
+              <input
+                      type="number"
+                      className="vendorinp"
+                      // value={this.state.vendordata[data.id]["vinp1"]}
+                      // onChange={(e) => this.handleChange(e, data.id, "vinp1")}
                       name="vendorinp1"
                     />
-                  </div> *               </                    <td>
-                  {/iv>
-                    <input
+              </td>
+              <td>
+              <input
                       type="number"
                       className="vendorinp"
-                      value={this.state.vendordata[data.id]["vinp2"]}
-                      onChange={(e) => this.handleChange(e, data.id, "vinp2")}
-                      name="vendorinp2"
+                      // value={this.state.vendordata[data.id]["vinp1"]}
+                      // onChange={(e) => this.handleChange(e, data.id, "vinp1")}
+                      name="vendorinp1"
                     />
-                  </div> *               </                    <td>
-                  {/iv>
-                    <input
-                      type="number"
-                      className="vendorinp"
-                      value={this.state.vendordata[data.id]["vinp3"]}
-                      onChange={(e) => this.handleChange(e, data.id, "vinp3")}
-                      name="vendorinp3"
-                    />
-                  </div> *               </                    <td>
-                  {/iv>
-                    <input
+              </td>
+              <td>
+              <input
                       type="submit"
-                      className="vendorsubmit"
-                      onClick={(e) => this.vendorsubmit(e, data.id, index)}
-                      value={data.sub}
+                      // className="vendorsubmit"
+                      // onClick={(e) => this.vendorsubmit(e, data.id, index)}
+                      // value={data.sub}
                     />
-                  </div> *               </                  {/* </tr          ))}
-          </tbody>
-        </Table> *    {/* <T<Tle responsive className="vendortable">
+              </td>
+              </tr>);
+            })}
+             </tbody>
+          </Table>
+            
+          
+
+                    
+                  
+                    
+           
+        <Table responsive className="vendortable">
           <thead>
             <tr>
               <th>Brand</th>
@@ -306,7 +346,7 @@ class Vendorhome extends Component {
               </tr>
             ))}
           </tbody>
-        </Table> *        {/* MOBILEVERSION
+        </Table>      {/* MOBILEVERSION
 
  */}{" "}
         {/* {this.state.userdata.map((data, index) => (
@@ -443,3 +483,23 @@ class Vendorhome extends Component {
 }
 
 export default Vendorhome;
+
+
+// RenderRows = () => {
+
+//   return this.state.result.map((elemst, index) => {
+//     if(value exist in vender data)
+//     if yes skip
+//     if no
+//     return (
+//       <RequestRows
+//         key={index}
+//         id={index}
+//         request={request}
+//         address={this.props.address}
+//         approversCount={this.props.approversCount}
+//       />
+//     );
+//   });
+// };
+

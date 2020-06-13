@@ -39,6 +39,10 @@ contract wetff {
     struct vendorValues {
         uint256 userValueIndex;
         address vendorAddress;
+        address userAddress;
+        string brand;
+        string model;
+        string date;
         uint256 vendorInput1;
         uint256 vendorInput2;
         uint256 vendorInput3;

@@ -118,7 +118,7 @@ export default class Others extends React.Component {
     await instance.methods
       .addUserData(
         this.state.Type,
-        this.state.Class,
+        8,
         this.state.Scrap,
         this.state.Self
       )

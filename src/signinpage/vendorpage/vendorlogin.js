@@ -41,8 +41,10 @@ class Vendorlogin extends Component {
         .catch((error)=>{
             this.setState({fireErrors: error.message})
         }).then((user)=>{
+            this.setState({fireErrors: 'please wait'})
             const adduserrole = fire.functions().httpsCallable('userrole');
             adduserrole({uid: user.user.uid , role: 'vendor' })
+            this.setState({fireErrors: 'you are vendor now please login again'})
         }).then(()=>{
             fire.auth().signOut();
         })

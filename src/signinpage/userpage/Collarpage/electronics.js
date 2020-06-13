@@ -120,7 +120,7 @@ export default class Electronics extends React.Component {
     await instance.methods
       .addUserData(
         this.state.Brand,
-        this.state.Class,
+        2,
         this.state.Model,
         this.state.Monthyear
       )

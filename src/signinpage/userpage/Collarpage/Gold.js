@@ -118,7 +118,7 @@ export default class Gold_silver extends React.Component {
     await instance.methods
       .addUserData(
         this.state.Type,
-        this.state.Class,
+        4,
         this.state.Form,
         this.state.Gram
       )

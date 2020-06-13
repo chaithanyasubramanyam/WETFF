@@ -6,8 +6,8 @@ import Adminpage from './signinpage/adminpage/adminpage';
 import {Switch,Route,Redirect} from 'react-router-dom';
 import Collar from './signinpage/userpage/Collarpage/collarpage1';
 import Homepage from './signinpage/userpage/homepage/homepage';
-import Profilepage from './signinpage/userpage/homepage/profilepage'
-    
+import Profilepage from './signinpage/userpage/homepage/profilepage';
+
 
 export default class App extends React.Component{
     render(){

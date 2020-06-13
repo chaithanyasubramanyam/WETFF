@@ -12,6 +12,7 @@
     "fs-extra": "^9.0.0",
     "ganache-cli": "^6.9.1",
     "ipfs-http-client": "^44.1.1",
+    "lodash": "^4.17.15",
     "mdbreact": "^4.27.0",
     "mocha": "^7.2.0",
     "react": "^16.13.1",

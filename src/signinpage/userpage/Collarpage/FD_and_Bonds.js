@@ -119,7 +119,7 @@ export default class FDandBonds extends React.Component {
     await instance.methods
       .addUserData(
         this.state.Interest,
-        this.state.Class,
+        5,
         this.state.Amt,
         this.state.Monthyear
       )

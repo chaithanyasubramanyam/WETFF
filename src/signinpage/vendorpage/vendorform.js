@@ -101,13 +101,24 @@ export default class Formpage extends React.Component {
                 <label htmlFor="class" className="grey-text">
                   Class
                 </label>
-                <input
-                  type="text"
-                  id="email"
-                  className="form-control"
-                  name="vendorclass"
-                  onChange={this.handleChange}
-                />
+                <select
+                id="classdrop"
+                name="vendorclass"
+                className="form-control"
+                onChange={this.handleChange}
+                required
+              >
+                  <option value=""></option>
+                  <option value="0">2 and 4 wheelers</option>
+                  <option value="1">Phones and laptops</option>
+                  <option value="2">Other electronics</option>
+                  <option value="3">Income</option>
+                  <option value="4">Gold/Silver</option>
+                  <option value="5">FD and Bonds</option>
+                  <option value="6">Stocks</option>
+                  <option value="7">Real Estate</option>
+                  <option value="8">Other</option>
+              </select>
                 <br />
 
                 <div className="text-center mt-4">

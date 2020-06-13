@@ -120,7 +120,7 @@ export default class Income extends React.Component {
     await instance.methods
       .addUserData(
         this.state.Coi,
-        this.state.Class,
+        3,
         this.state.Income,
         this.state.Lincome
       )
